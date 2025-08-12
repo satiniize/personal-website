@@ -1,13 +1,14 @@
 import ContentWrapper from "../components/content-wrapper";
-import Header from "../components/header";
 import { useState, useEffect } from "react";
 
 function RotatingHeader() {
 	const rotatingTexts = [
 		"Rayhan",
 		"an engineer",
-		"a designer",
 		"a developer",
+		"a designer",
+		"a photographer",
+		"a videographer",
 	];
 
 	const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -23,19 +24,23 @@ function RotatingHeader() {
 
 	return (
 		<>
-			<div className="outline outline-red-400 drop-shadow-md text-7xl italic">
-				<h1 className="outline outline-yellow-400 whitespace-nowrap">
-					Hello, I'm
-				</h1>
-				<div className="outline outline-cyan-400">
-					<h1 className="text-transparent">PLACEHOLDER</h1>
+			<div className="drop-shadow-md italic whitespace-nowrap select-none">
+				<p className="text-6xl">Hello, I'm</p>
+				<div className="text-8xl font-bold">
+					{/*Placeholder text to offset the above text accordingly.
+					Needed because absolute positioning doesn't describe size.
+					Decided to do this instead of h-XX since it's more adaptable*/}
+					<p className="text-transparent">
+						{rotatingTexts[currentTextIndex]}
+					</p>
+					{/*The actual morphing text visible to the user*/}
 					{rotatingTexts.map((text, index) => (
-						<h1
+						<p
 							key={index}
-							className={`outline outline-lime-400 absolute bottom-0 transition duration-500 font-bold whitespace-nowrap ${index == currentTextIndex ? "text-white blur-none" : "text-transparent blur-lg"}`}
+							className={`absolute bottom-0 transition-all duration-500 ease-in-out ${index == currentTextIndex ? "text-white blur-none" : "text-transparent blur-lg"}`}
 						>
 							{text}
-						</h1>
+						</p>
 					))}
 				</div>
 			</div>
@@ -46,7 +51,7 @@ function RotatingHeader() {
 function Home() {
 	return (
 		<ContentWrapper>
-			<div className="flex flex-col w-full h-screen p-4 bg-red-200">
+			<div className="flex flex-col w-full h-screen p-8">
 				<div className="flex-1"></div>
 				<RotatingHeader />
 			</div>
