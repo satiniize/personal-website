@@ -29,37 +29,17 @@ function RotatingHeader() {
 
 	return (
 		<>
-			<div className="w-full flex flex-col sm:flex-row sm:items-center gap-4 drop-shadow-md text-7xl italic">
-				<span className="whitespace-nowrap">Hello, I'm</span>
+			<div className="w-full flex flex-row sm:flex-row sm:items-center gap-4 drop-shadow-md text-7xl italic">
+				{/*<h1 className="whitespace-nowrap">Hello, I'm</h1>*/}
 				<div className="w-full h-15 flex items-center overflow-visible">
-					<div
-						className={`w-full h-30 overflow-hidden`}
-						style={{
-							WebkitMaskImage:
-								"linear-gradient(transparent, black 25%, black 75%, transparent)",
-							maskImage:
-								"linear-gradient(transparent, black 25%, black 75%, transparent)",
-						}}
-					>
-						<div
-							className="transition-transform duration-500 ease-in-out"
-							style={{
-								transform:
-									"translateY(-" +
-									currentTextIndex * 30 * 4 +
-									"px)",
-							}}
+					{rotatingTexts.map((text, index) => (
+						<h1
+							key={index}
+							className={`absolute inset-0 transition duration-500 flex items-center font-bold whitespace-nowrap ${index == currentTextIndex ? "text-white blur-none" : "text-transparent blur-lg"}`}
 						>
-							{rotatingTexts.map((text, index) => (
-								<p
-									key={index}
-									className="h-30 flex items-center font-bold whitespace-nowrap"
-								>
-									{text}
-								</p>
-							))}
-						</div>
-					</div>
+							{text}
+						</h1>
+					))}
 				</div>
 			</div>
 			{/* Carousel */}
