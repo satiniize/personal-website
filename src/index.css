@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+	--font-libre-bodoni: "Libre Bodoni", "serif";
+	--font-instrument-serif: "Instrument Serif", "serif";
+	--font-ibm-plex-mono: "IBM Plex Mono", "monospace";
+	--font-instrument-sans: "Instrument Sans", "sans-serif";
+}
+
+.text-shadow {
+	text-shadow: 0 0px 16px rgba(0, 0.2, 0.5, 0.5);
+}
+
+.glass {
+	@apply drop-shadow-md backdrop-blur-md bg-gradient-to-t from-gray-300/20 to-white/20 outline outline-white/40;
+	text-shadow: 0 0px 24px rgba(0, 0.2, 0.5, 0.5);
+}
+
+.glass-hover {
+	@apply hover:outline-white/60 hover:bg-white/10 hover:drop-shadow-xl duration-500 transition-all ease-in-out;
+}
